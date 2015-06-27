@@ -1,0 +1,144 @@
+h1 {
+  font-family: "fira-sans-2";
+  font-weight: 500;
+  margin: 0;
+  font-size: 4em;
+  margin-top: -22px;
+}
+
+b {
+  font-weight: 500;
+}
+
+p {
+  font-family: "museo-sans";
+  font-weight: 300;
+  margin: 5px auto;
+}
+
+body {
+  font-family: "fira-sans-2";
+  font-weight: 600;
+}
+
+#follower_box{
+  background-color: rgb(26, 188, 156);
+  color: rgb(44, 62, 80);
+  font-size: 1.5em;
+  font-weight: 500;
+  padding: 2%;
+  font-family: "museo-sans";
+  width: 96%;
+  text-align: center;
+}
+
+#avatar{
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+.error_message{
+  background-color: rgb(231, 76, 60);
+  color: rgb(14, 14, 14);
+  /*border-style: solid;
+  border-width: 3px;
+  border-color: #c80000;*/
+  padding: 5px;
+  border-radius: 3px;
+  font-family: "museo-sans";
+  font-weight: 500;
+  -webkit-animation: bounce 500ms ease 3; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: bounce 500ms ease 3; /* Firefox < 16 */
+  -ms-animation: bounce 500ms ease 3; /* Internet Explorer */
+  -o-animation: bounce 500ms ease 3; /* Opera < 12.1 */
+  animation: bounce 500ms ease 3;
+}
+
+.info_flash{
+  background-color: rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+  /*border-color: #0026f0;*/
+}
+
+.warning_flash{
+  background-color: rgb(231, 76, 60);
+  color: rgb(231, 76, 60);
+  /*border-color: #db0000;*/
+}
+
+.success_flash{
+  background-color: rgb(46, 204, 113);
+  color: rgb(46, 204, 113);
+  /*border-color: #0fbb00;*/
+}
+
+.flash{
+  /*border-style: solid;
+  border-width: 3px;*/
+  padding: 5px;
+  width: 60%;
+  text-align: center;
+  margin: 2px 20% 5px 20%;
+  font-family: 'museo-sans';
+  font-weight: 500;
+  font-size: 1.2em;
+  border-radius: 3px;
+  visibility: hidden;
+  position: absolute;
+  z-index: 100;
+  box-shadow: 0 1px 2px 1px rgb(127, 140, 141), 0 0 0 0;
+  -webkit-animation: fadeinout 30s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeinout 30s; /* Firefox < 16 */
+  -ms-animation: fadeinout 30s; /* Internet Explorer */
+  -o-animation: fadeinout 30s; /* Opera < 12.1 */
+  animation: fadeinout 30s;
+  -webkit-transition: opacity 500ms, box-shadow 500ms; /* Safari */
+  transition: opacity 500ms, box-shadow 500ms;
+}
+
+.flashtext{
+  color: rgba(44, 62, 80, 1);
+  text-shadow: none;
+  transition: color 500ms, text-shadow 500ms;
+  -webkit-transition: color 500ms, text-shadow 500ms;
+}
+
+.flash:hover .flashtext{
+  color: rgba(44, 62, 80, 0);
+  text-shadow: 0 0 3px rgb(44, 62, 80);
+}
+
+.flash_hover{
+  /*pointer-events: none;*/
+  opacity: 0.4 !important;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgb(127, 140, 141), 0 0 8px 6px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    margin-left: 0px;
+    }
+  50% {
+    margin-left: 15px;
+    }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0.0;
+  }
+
+  to {
+    opacity: 1.0;
+  }
+}
+
+@keyframes fadeinout {
+  0%, 100% {
+  opacity: 0.0;
+  visibility: visible;}
+
+  2%, 98% {
+  opacity: 1.0;
+  visibility: visible;}

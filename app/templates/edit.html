@@ -1,0 +1,31 @@
+<!-- extends 'base.html'-->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Edit your profile</1>
+  <form action="" method="POST" name="edit">
+    {{ form.hidden_tag() }}
+    <table>
+      <tr>
+        <td>Your nickname:</td>
+        <td>
+            {{ form.nickname(size=24) }}
+            {% for error in form.nickname.errors %}
+            <span class="error_message">{{ error }}</span>
+            {% endfor %}
+        </td>
+      </tr><tr>
+        <td>About yourself:</td>
+        <td>
+          {{ form.about_me(cols=28, rows=5) }}
+          {% for error in form.about_me.errors %}
+          <span class="error_message">{{ error }}</span>
+          {% endfor %}
+        </td>
+      </tr><tr>
+        <td></td>
+        <td><input type="submit" value="Save changes"></td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

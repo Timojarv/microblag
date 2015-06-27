@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo 'Running unit tests...'
+./tests.py
+if [ $? -eq 0 ]; then
+	echo 'Tests succesful! Starting server in production mode...'
+	./runp.py
+	if [ $? -eq 0 ]; then
+		echo 'Server stopped...'
+		exit
+	else
+		echo 'Could not start the server. Aborting...'
+		exit 1
+	fi
+else
+	echo 'Tests failed! Aborting...'
+	exit 1
+fi

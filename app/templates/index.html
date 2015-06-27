@@ -1,0 +1,15 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  {% if user.nickname %}
+    <h1>Hi, {{ user.nickname }}!</h1>
+  {% else %}
+    <h1> Hi, guest! Please log in.</h1>
+  {% endif %}
+    {% for post in posts %}
+    <p>
+      {{ post.author.nickname }} says: <b>{{ post.body }}</b>
+    </p>
+    {% endfor %}
+{% endblock %}

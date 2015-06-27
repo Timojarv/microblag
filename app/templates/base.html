@@ -1,0 +1,51 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - MicroBlag</title>
+    {% else %}
+    <title>Welcome to MicroBlag!</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="../static/base.css">
+  </head>
+  <body>
+    <script src="//use.typekit.net/fnd5kva.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    <!-- Show all the flashes -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+      {% if message == 'msg_type_success' %}
+      <div class="flash success_flash" onmouseenter="fadeFlash(this)" onclick="hideElement(this)">
+      {% elif message == 'msg_type_warning' %}
+        <div class="flash warning_flash" onmouseenter="fadeFlash(this)" onclick="hideElement(this)">
+      {% elif message == 'msg_type_info' %}
+        <div class="flash info_flash" onmouseenter="fadeFlash(this)" onclick="hideElement(this)">
+      {% else %}
+        <span class="flashtext">{{ message }}</span></div>
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div>Microblog:
+        <a href="{{ url_for('index') }}">Home</a>
+        {% if g.user.is_authenticated() %}
+        | <a href="{{ url_for('user', nickname=g.user.nickname) }}">Your profile</a>
+        | <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+        | <a href="{{ url_for('login') }}">Login</a>
+        | <a href="{{ url_for('signup') }}">Sign Up</a>
+        {% endif %}
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+    <script type="text/javascript">
+      function fadeFlash(object){
+        object.classList.add('flash_hover');
+        object.onmouseleave=function(){object.classList.remove('flash_hover');};
+      }
+      function hideElement(object){
+        object.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
