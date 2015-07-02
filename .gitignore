@@ -1,3 +1,7 @@
 tmp/
-**/__pychache__
+**/__pycache__
 db_repository/
+.sass-cache/
+flask/
+run
+sass

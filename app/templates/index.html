@@ -7,9 +7,22 @@
   {% else %}
     <h1> Hi, guest! Please log in.</h1>
   {% endif %}
-    {% for post in posts %}
-    <p>
-      {{ post.author.nickname }} says: <b>{{ post.body }}</b>
-    </p>
+  {% if user.nickname %}
+  <form id="post_form" action="" method="post" name="post">
+      {{ form.hidden_tag() }}
+      {{ form.post(cols=28, rows=4, maxlength=140, placeholder="Say something...") }}
+      {% for error in form.post.errors %}
+        <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+      <button class="btn_modern" onclick="document.getElementById('postform').submit()">Post!</button>
+  </form>
+  {% endif %}
+  <div id="posts_wrapper">
+  <!--Posts is a pagination object-->
+    {% if posts.has_prev %}<a class="btn_modern" href="{{ url_for('index', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>{% endif %}
+    {% for post in posts.items %}
+      {% include 'post.html' %}
     {% endfor %}
+    {% if posts.has_next %}<a class="btn_modern" href="{{ url_for('index', page=posts.next_num) }}">Older posts &gt;&gt;</a>{% endif %}
+  </div>
 {% endblock %}

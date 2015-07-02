@@ -1,0 +1,273 @@
+$header_font_stack: fira-sans-2, Arial;
+
+$content_font_stack: museo-sans, Arial;
+
+$flatui_turquoise: rgb(26, 188, 156);
+$flatui_greensea: rgb(22, 160, 133);
+$flatui_emerald: rgb(46, 204, 113);
+$flatui_nephritis: rgb(39, 174, 96);
+$flatui_peterriver: rgb(52, 152, 219);
+$flatui_belizehole: rgb(41, 128, 185);
+$flatui_amethyst: rgb(155, 89, 182);
+$flatui_wisteria: rgb(142, 68, 173);
+$flatui_wetasphalt: rgb(52, 73, 94);
+$flatui_midnightblue: rgb(44, 62, 80);
+$flatui_sunflower: rgb(241, 196, 15);
+$flatui_orange: rgb(243, 156, 18);
+$flatui_carrot: rgb(230, 126, 34);
+$flatui_pumpkin: rgb(211, 84, 0);
+$flatui_alizarin: rgb(231, 76, 60);
+$flatui_pomegranate: rgb(192, 57, 43);
+$flatui_clouds: rgb(236, 240, 241);
+$flatui_silver: rgb(189, 195, 199);
+$flatui_concrete: rgb(149, 165, 166);
+$flatui_asbestos: rgb(127, 140, 141);
+
+
+h1 {
+  font-family: $header_font_stack;
+  font-weight: 500;
+  margin: 0;
+  font-size: 4em;
+  margin-top: -22px;
+}
+
+h2 {
+  font-family: $header_font_stack;
+  font-weight: 300;
+  margin: 0;
+  font-size: 2em;
+}
+
+b {
+  font-weight: 500;
+}
+
+p {
+  font-family: $content_font_stack;
+  font-weight: 300;
+  margin: 10px auto;
+}
+
+body {
+  font-family: $header_font_stack;
+  font-weight: 600;
+}
+
+td{
+  position: relative;
+  font-weight: 600;
+}
+
+#follower_box{
+  background-color: $flatui_turquoise;
+  color: $flatui_midnightblue;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding: 2%;
+  font-family: $content_font_stack;
+  width: 96%;
+  text-align: center;
+}
+
+#avatar{
+  padding-right: 10px;
+}
+
+.post_container .avatar_wrapper{
+  float: left;
+  margin-right: 8px;
+}
+
+.post_container .author_wrapper{
+  font-size: 1.2em;
+}
+
+.post_container{
+  width: 226px;
+  padding:12px;
+  border-radius: 5px;
+  height: auto;
+  border: 1px solid $flatui_turquoise;
+  margin: 8px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+#posts_wrapper .btn_modern{
+  display: inline-block;
+  margin-top: 60px;
+  margin-left: 8px;
+}
+
+.post_container .content_wrapper{
+  /*clear: both;*/
+  margin-top: 16px;
+}
+
+#post_form{
+  margin: 8px;
+  width: 250px;
+}
+
+#about_me{
+  white-space: pre-line;
+}
+
+#post{
+  width: 250px;
+  height: 100px;
+}
+
+.footer_container{
+  position: absolute;
+  bottom: -2px;
+}
+
+.error_message{
+  background-color: $flatui_alizarin;
+  color: rgb(14, 14, 14);
+  /*border-style: solid;
+  border-width: 3px;
+  border-color: #c80000;*/
+  padding: 5px;
+  border-radius: 3px;
+  font-family:$content_font_stack;
+  font-weight: 500;
+  position: relative;
+  -webkit-animation: bounce 500ms ease 3; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: bounce 500ms ease 3; /* Firefox < 16 */
+  -ms-animation: bounce 500ms ease 3; /* Internet Explorer */
+  -o-animation: bounce 500ms ease 3; /* Opera < 12.1 */
+  animation: bounce 500ms ease 3;
+}
+
+.info_flash{
+  background-color: $flatui_peterriver;
+  color: $flatui_peterriver;
+  /*border-color: #0026f0;*/
+}
+
+.warning_flash{
+  background-color: $flatui_alizarin;
+  color: $flatui_alizarin;
+  /*border-color: #db0000;*/
+}
+
+.success_flash{
+  background-color: $flatui_emerald;
+  color: $flatui_emerald;
+  /*border-color: #0fbb00;*/
+}
+
+.flash{
+  /*border-style: solid;
+  border-width: 3px;*/
+  padding: 5px;
+  width: 60%;
+  text-align: center;
+  margin: 2px 20% 5px 20%;
+  font-family: $content_font_stack;
+  font-weight: 500;
+  font-size: 1.2em;
+  border-radius: 3px;
+  visibility: hidden;
+  position: absolute;
+  z-index: 100;
+  box-shadow: 0 1px 2px 1px $flatui_asbestos, 0 0 0 0;
+  -webkit-animation: fadeinout 30s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeinout 30s; /* Firefox < 16 */
+  -ms-animation: fadeinout 30s; /* Internet Explorer */
+  -o-animation: fadeinout 30s; /* Opera < 12.1 */
+  animation: fadeinout 30s;
+  -webkit-transition: opacity 500ms, box-shadow 500ms; /* Safari */
+  transition: opacity 500ms, box-shadow 500ms;
+}
+
+.flash_text{
+  color: $flatui_midnightblue;
+  text-shadow: none;
+  transition: color 500ms, text-shadow 500ms;
+  -webkit-transition: color 500ms, text-shadow 500ms;
+}
+
+.flash:hover .flas_htext{
+  color: rgba($flatui_midnightblue, 0);
+  text-shadow: 0 0 3px $flatui_midnightblue;
+}
+
+.flash_hover{
+  /*pointer-events: none;*/
+  opacity: 0.4 !important;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 $flatui_asbestos, 0 0 8px 6px;
+}
+
+.btn_modern {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition-duration: 0.25s;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.4);
+    color: rgb(255, 255, 255);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0px none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 250px;
+}
+
+a.btn_modern{
+  padding: 5px 8px;
+  width: auto;
+}
+
+.btn_modern:hover {
+    background-color: rgb(255, 255, 255);
+    color: $flatui_greensea;
+}
+
+.modern_smaller {
+  width: auto;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    margin-left: 0px;
+    }
+  50% {
+    margin-left: 15px;
+    }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0.0;
+  }
+
+  to {
+    opacity: 1.0;
+  }
+}
+
+@keyframes fadeinout {
+  0%, 100% {
+  opacity: 0.0;
+  visibility: visible;}
+
+  2%, 98% {
+  opacity: 1.0;
+  visibility: visible;}
+}
+
+@keyframes bgfade{
+  0%, 100%{background-color: rgba($flatui_turquoise, 0.8);}
+  20%{background-color: rgba($flatui_peterriver, 0.8);}
+  40%{background-color: rgba($flatui_amethyst, 0.8);}
+  60%{background-color: rgba($flatui_orange, 0.8);}
+  80%{background-color: rgba($flatui_emerald, 0.8);}
+}

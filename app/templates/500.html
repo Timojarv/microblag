@@ -2,7 +2,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>An unexpected error has occurred</h1>
-  <p>The administrator has been notified. Sorry for the inconvenience!</p>
-  <p><a href="{{ url_for('index') }}">Back</a></p>
+<script type="text/javascript">randomBG()</script>
+  <h1 id="first">5</h1>
+  <h1 id="second">0</h1>
+  <h1 id="third">0</h1><br>
+  <p id="undertext">Something weird happened. We'll try to fix it</p>
+  <p id="undertext"><button class="btn_modern" onclick="window.history.go(-1)'">Back</button></p>
 {% endblock %}

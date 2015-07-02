@@ -6,7 +6,7 @@ from app.models import User
 class LoginForm(Form):
     email = StringField('email', validators=[DataRequired()])
     passwd = PasswordField('password', validators=[DataRequired()])
-    remember_me = BooleanField('remember_me', default=False)
+    remember_me = BooleanField('remember_me', default=False)#, label='Remember Me')
 
 class RegisterForm(Form):
     nickname = StringField('nickname', validators=[DataRequired()])
@@ -37,5 +37,7 @@ class EditForm(Form):
         if user != None:
             self.nickname.errors.append('Sorry, but that nickname was already in use.')
             return False
-
         return True
+
+class PostForm(Form):
+    post = TextAreaField('post', validators=[DataRequired(), Length(min=0, max=140)])

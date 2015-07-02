@@ -1,10 +1,11 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
-from .forms import LoginForm, EditForm, RegisterForm
-from .models import User
+from .forms import LoginForm, EditForm, RegisterForm, PostForm
+from .models import User, Post
 from datetime import datetime
 from pbkdf2 import crypt
+from config import POSTS_PER_PAGE
 
 @lm.user_loader
 def load_user(id):
@@ -20,24 +21,24 @@ def before_request():
         db.session.commit()
 
 
-@app.route('/')
-@app.route('/index')
-def index():
-    user = g.user
-    posts = [
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('index.html',
-                           title='Home',
-                           user=user,
-                           posts=posts)
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
+@app.route('/index/<int:page>', methods=['GET', 'POST'])
+def index(page=1):
+    if g.user.is_authenticated():
+        form = PostForm()
+        if form.validate_on_submit():
+            post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+            db.session.add(post)
+            db.session.commit()
+            flash('msg_type_success')
+            flash('Your post is now live!')
+            return redirect(url_for('index'))
+        user = g.user
+        posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, True)
+        return render_template('index.html', title='Home', user=user, posts=posts, form=form, extra_css=['modern', 'whitebg'])
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -65,8 +66,8 @@ def login():
         flash('Succesfully logged in!')
         return redirect(request.args.get('next') or url_for('index'))
     return render_template('login.html',
-                           title='Sign In',
-                           form=form)
+                           form=form,
+                           extra_css=['login', 'modern'])
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -127,22 +128,20 @@ def logout():
     logout_user()
     flash('msg_type_info')
     flash('Logged out.')
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 
 @app.route('/u/<nickname>')
+@app.route('/user/<nickname>/<int:page>')
 @login_required
-def user(nickname):
+def user(nickname, page=1):
     user = User.query.filter_by(nickname=nickname).first()
     if user == None:
         flash('msg_type_warning')
         flash('User %s not found!' % nickname)
         return redirect(url_for('index'))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts, title=user.nickname)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, True)
+    return render_template('user.html', user=user, posts=posts, title=user.nickname, extra_css=['whitebg'])
 
 
 @app.route('/edit', methods=['GET', 'POST'])
@@ -160,7 +159,7 @@ def edit():
     else:
         form.nickname.data = g.user.nickname
         form.about_me.data = g.user.about_me
-    return render_template('edit.html', form=form, title='Edit profile')
+    return render_template('edit.html', form=form, title='Edit profile', extra_css=['modern','whitebg'])
 
 @app.route('/follow/<nickname>')
 @login_required
@@ -210,9 +209,9 @@ def unfollow(nickname):
 
 @app.errorhandler(404)
 def not_found_error(error):
-    return render_template('404.html'), 404
+    return render_template('404.html', extra_css=['error'], title="404"), 404
 
 @app.errorhandler(500)
 def internal_error(error):
     db.session.rollback()
-    return render_template('500.html'), 500
+    return render_template('500.html', extra_css=['error'], title="500"), 500

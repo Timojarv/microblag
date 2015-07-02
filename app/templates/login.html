@@ -2,22 +2,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
+<script type="text/javascript">randomBG()</script>
+<div id="wrapper">
+<div id="login_container">
+  <div id="login_form">
+    <h1>Welcome</h1>
+    <h2>Please log in</h2>
     <form action="" method="post" name="login">
         {{ form.hidden_tag() }}
         <p>
-            Email:<br>
-            {{ form.email(size=40) }}
+            {{ form.email(size=20, placeholder="Email") }}
+            {% if form.email.errors %}
+            <script type="text/javascript">
+              redBox(document.getElementById('email'))
+            </script>
             {% for error in form.email.errors %}
                 <span class="error_message">{{ error }}</span>
-            {% endfor %}<br>
-            Password:<br>
-            {{ form.passwd(size=40) }}
+            {% endfor %}
+            {% endif %}
+            {{ form.passwd(size=20, placeholder="Password") }}
+            {% if form.passwd.errors %}
+            <script type="text/javascript">
+              redBox(document.getElementById('passwd'))
+            </script>
             {% for error in form.passwd.errors %}
                 <span class="error_message">{{ error }}</span>
-            {% endfor %}<br>
+            {% endfor %}
+            {% endif %}
         </p>
-        <p>{{ form.remember_me }} Remember Me</p>
-        <p><input type="submit" value="Sign In"></p>
+        <p>{{ form.remember_me }}<label for="remember_me">Remember Me</label></p>
+        <p><button class="btn_modern" type="submit">Log in</button></p>
     </form>
+  </div>
+</div>
+</div>
 {% endblock %}

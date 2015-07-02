@@ -1,0 +1,21 @@
+.btn_modern {
+  border: 1px solid rgb(22, 160, 133);
+  color: rgb(22, 160, 133);
+}
+
+.btn_modern:hover {
+  border: 1px solid rgb(22, 160, 133);
+  background-color: rgb(22, 160, 133);
+  color: rgb(255, 255, 255);
+}
+
+input[type=text], input[type=password], textarea {
+  border: 1px solid rgb(22, 160, 133);
+  color: rgb(22, 160, 133);
+}
+
+form input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  border: 1px solid rgb(22, 160, 133);
+  background-color: rgb(22, 160, 133);
+  color: rgb(255, 255, 255);
+}

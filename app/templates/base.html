@@ -6,6 +6,12 @@
     <title>Welcome to MicroBlag!</title>
     {% endif %}
     <link rel="stylesheet" type="text/css" href="../static/base.css">
+    <script type="text/javascript" src="../static/fx.js"></script>
+    {% if extra_css %}
+    {% for css in extra_css %}
+      <link rel="stylesheet" type="text/css" href="../static/{{ css }}.css">
+    {% endfor %}
+    {% endif %}
   </head>
   <body>
     <script src="//use.typekit.net/fnd5kva.js"></script>
@@ -21,12 +27,12 @@
       {% elif message == 'msg_type_info' %}
         <div class="flash info_flash" onmouseenter="fadeFlash(this)" onclick="hideElement(this)">
       {% else %}
-        <span class="flashtext">{{ message }}</span></div>
+        <span class="flash_text">{{ message }}</span></div>
       {% endif %}
     {% endfor %}
     {% endif %}
     {% endwith %}
-    <div>Microblog:
+    <div id="header">Microblog:
         <a href="{{ url_for('index') }}">Home</a>
         {% if g.user.is_authenticated() %}
         | <a href="{{ url_for('user', nickname=g.user.nickname) }}">Your profile</a>
@@ -35,8 +41,8 @@
         | <a href="{{ url_for('login') }}">Login</a>
         | <a href="{{ url_for('signup') }}">Sign Up</a>
         {% endif %}
+        <hr>
     </div>
-    <hr>
     {% block content %}{% endblock %}
     <script type="text/javascript">
       function fadeFlash(object){

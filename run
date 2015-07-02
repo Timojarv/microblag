@@ -1,5 +1,12 @@
 #!/bin/bash
-
+echo 'Compiling Stylesheets...'
+sass --update app/static/:app/static
+if [ $? -eq 0 ]; then
+	echo 'Stylesheet compilation succesful!'
+else
+	echo 'Stylesheet compilation failed! Aborting...'
+	exit 1
+fi
 echo 'Running unit tests...'
 ./tests.py
 if [ $? -eq 0 ]; then

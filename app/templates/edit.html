@@ -2,12 +2,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Edit your profile</1>
-  <form action="" method="POST" name="edit">
+  <h1>Edit your profile</h1>
+  <form id="edit_form" action="" method="POST" name="edit">
     {{ form.hidden_tag() }}
     <table>
       <tr>
-        <td>Your nickname:</td>
+        <td valign=top style="width: 120px;">Your nickname:</td>
         <td>
             {{ form.nickname(size=24) }}
             {% for error in form.nickname.errors %}
@@ -15,16 +15,20 @@
             {% endfor %}
         </td>
       </tr><tr>
-        <td>About yourself:</td>
+        <td valign=top>About yourself:</td>
         <td>
-          {{ form.about_me(cols=28, rows=5) }}
+          {{ form.about_me(cols=36, rows=5) }}
           {% for error in form.about_me.errors %}
           <span class="error_message">{{ error }}</span>
           {% endfor %}
         </td>
       </tr><tr>
         <td></td>
-        <td><input type="submit" value="Save changes"></td>
+        <td>
+          <button type='button' style="width: 35%;" class="btn_modern modern_smaller" onclick="location.href='{{ url_for('user', nickname=g.user.nickname) }}'">
+            Back</button>
+          <button class="btn_modern modern_smaller" style="float: right; width: 60%;" onclick="document.getElementById('editform').submit()">Save changes</button>
+        </td>
       </tr>
     </table>
   </form>

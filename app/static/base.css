@@ -1,144 +1,221 @@
 h1 {
-  font-family: "fira-sans-2";
+  font-family: fira-sans-2, Arial;
   font-weight: 500;
   margin: 0;
   font-size: 4em;
-  margin-top: -22px;
-}
+  margin-top: -22px; }
+
+h2 {
+  font-family: fira-sans-2, Arial;
+  font-weight: 300;
+  margin: 0;
+  font-size: 2em; }
 
 b {
-  font-weight: 500;
-}
+  font-weight: 500; }
 
 p {
-  font-family: "museo-sans";
+  font-family: museo-sans, Arial;
   font-weight: 300;
-  margin: 5px auto;
-}
+  margin: 10px auto; }
 
 body {
-  font-family: "fira-sans-2";
-  font-weight: 600;
-}
+  font-family: fira-sans-2, Arial;
+  font-weight: 600; }
 
-#follower_box{
-  background-color: rgb(26, 188, 156);
-  color: rgb(44, 62, 80);
+td {
+  position: relative;
+  font-weight: 600; }
+
+#follower_box {
+  background-color: #1abc9c;
+  color: #2c3e50;
   font-size: 1.5em;
   font-weight: 500;
   padding: 2%;
-  font-family: "museo-sans";
+  font-family: museo-sans, Arial;
   width: 96%;
-  text-align: center;
-}
+  text-align: center; }
 
-#avatar{
-  padding-right: 10px;
+#avatar {
+  padding-right: 10px; }
+
+.post_container .avatar_wrapper {
+  float: left;
+  margin-right: 8px; }
+
+.post_container .author_wrapper {
+  font-size: 1.2em; }
+
+.post_container {
+  width: 226px;
+  padding: 12px;
   border-radius: 5px;
-}
+  height: auto;
+  border: 1px solid #1abc9c;
+  margin: 8px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top; }
 
-.error_message{
-  background-color: rgb(231, 76, 60);
-  color: rgb(14, 14, 14);
+#posts_wrapper .btn_modern {
+  display: inline-block;
+  margin-top: 60px;
+  margin-left: 8px; }
+
+.post_container .content_wrapper {
+  /*clear: both;*/
+  margin-top: 16px; }
+
+#post_form {
+  margin: 8px;
+  width: 250px; }
+
+#about_me {
+  white-space: pre-line; }
+
+#post {
+  width: 250px;
+  height: 100px; }
+
+.footer_container {
+  position: absolute;
+  bottom: -2px; }
+
+.error_message {
+  background-color: #e74c3c;
+  color: #0e0e0e;
   /*border-style: solid;
   border-width: 3px;
   border-color: #c80000;*/
   padding: 5px;
   border-radius: 3px;
-  font-family: "museo-sans";
+  font-family: museo-sans, Arial;
   font-weight: 500;
-  -webkit-animation: bounce 500ms ease 3; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: bounce 500ms ease 3; /* Firefox < 16 */
-  -ms-animation: bounce 500ms ease 3; /* Internet Explorer */
-  -o-animation: bounce 500ms ease 3; /* Opera < 12.1 */
-  animation: bounce 500ms ease 3;
-}
+  position: relative;
+  -webkit-animation: bounce 500ms ease 3;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: bounce 500ms ease 3;
+  /* Firefox < 16 */
+  -ms-animation: bounce 500ms ease 3;
+  /* Internet Explorer */
+  -o-animation: bounce 500ms ease 3;
+  /* Opera < 12.1 */
+  animation: bounce 500ms ease 3; }
 
-.info_flash{
-  background-color: rgb(52, 152, 219);
-  color: rgb(52, 152, 219);
-  /*border-color: #0026f0;*/
-}
+.info_flash {
+  background-color: #3498db;
+  color: #3498db;
+  /*border-color: #0026f0;*/ }
 
-.warning_flash{
-  background-color: rgb(231, 76, 60);
-  color: rgb(231, 76, 60);
-  /*border-color: #db0000;*/
-}
+.warning_flash {
+  background-color: #e74c3c;
+  color: #e74c3c;
+  /*border-color: #db0000;*/ }
 
-.success_flash{
-  background-color: rgb(46, 204, 113);
-  color: rgb(46, 204, 113);
-  /*border-color: #0fbb00;*/
-}
+.success_flash {
+  background-color: #2ecc71;
+  color: #2ecc71;
+  /*border-color: #0fbb00;*/ }
 
-.flash{
+.flash {
   /*border-style: solid;
   border-width: 3px;*/
   padding: 5px;
   width: 60%;
   text-align: center;
   margin: 2px 20% 5px 20%;
-  font-family: 'museo-sans';
+  font-family: museo-sans, Arial;
   font-weight: 500;
   font-size: 1.2em;
   border-radius: 3px;
   visibility: hidden;
   position: absolute;
   z-index: 100;
-  box-shadow: 0 1px 2px 1px rgb(127, 140, 141), 0 0 0 0;
-  -webkit-animation: fadeinout 30s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeinout 30s; /* Firefox < 16 */
-  -ms-animation: fadeinout 30s; /* Internet Explorer */
-  -o-animation: fadeinout 30s; /* Opera < 12.1 */
+  box-shadow: 0 1px 2px 1px #7f8c8d, 0 0 0 0;
+  -webkit-animation: fadeinout 30s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeinout 30s;
+  /* Firefox < 16 */
+  -ms-animation: fadeinout 30s;
+  /* Internet Explorer */
+  -o-animation: fadeinout 30s;
+  /* Opera < 12.1 */
   animation: fadeinout 30s;
-  -webkit-transition: opacity 500ms, box-shadow 500ms; /* Safari */
-  transition: opacity 500ms, box-shadow 500ms;
-}
+  -webkit-transition: opacity 500ms, box-shadow 500ms;
+  /* Safari */
+  transition: opacity 500ms, box-shadow 500ms; }
 
-.flashtext{
-  color: rgba(44, 62, 80, 1);
+.flash_text {
+  color: #2c3e50;
   text-shadow: none;
   transition: color 500ms, text-shadow 500ms;
-  -webkit-transition: color 500ms, text-shadow 500ms;
-}
+  -webkit-transition: color 500ms, text-shadow 500ms; }
 
-.flash:hover .flashtext{
+.flash:hover .flas_htext {
   color: rgba(44, 62, 80, 0);
-  text-shadow: 0 0 3px rgb(44, 62, 80);
-}
+  text-shadow: 0 0 3px #2c3e50; }
 
-.flash_hover{
+.flash_hover {
   /*pointer-events: none;*/
   opacity: 0.4 !important;
   cursor: pointer;
-  box-shadow: 0 0 0 0 rgb(127, 140, 141), 0 0 8px 6px;
-}
+  box-shadow: 0 0 0 0 #7f8c8d, 0 0 8px 6px; }
+
+.btn_modern {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition-duration: 0.25s;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: 0px none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  width: 250px; }
+
+a.btn_modern {
+  padding: 5px 8px;
+  width: auto; }
+
+.btn_modern:hover {
+  background-color: white;
+  color: #16a085; }
+
+.modern_smaller {
+  width: auto; }
 
 @keyframes bounce {
   0%, 100% {
-    margin-left: 0px;
-    }
+    margin-left: 0px; }
   50% {
-    margin-left: 15px;
-    }
-}
-
+    margin-left: 15px; } }
 @keyframes fadein {
   from {
-    opacity: 0.0;
-  }
-
+    opacity: 0.0; }
   to {
-    opacity: 1.0;
-  }
-}
-
+    opacity: 1.0; } }
 @keyframes fadeinout {
   0%, 100% {
-  opacity: 0.0;
-  visibility: visible;}
-
+    opacity: 0.0;
+    visibility: visible; }
   2%, 98% {
-  opacity: 1.0;
-  visibility: visible;}
+    opacity: 1.0;
+    visibility: visible; } }
+@keyframes bgfade {
+  0%, 100% {
+    background-color: rgba(26, 188, 156, 0.8); }
+  20% {
+    background-color: rgba(52, 152, 219, 0.8); }
+  40% {
+    background-color: rgba(155, 89, 182, 0.8); }
+  60% {
+    background-color: rgba(243, 156, 18, 0.8); }
+  80% {
+    background-color: rgba(46, 204, 113, 0.8); } }
+
+/*# sourceMappingURL=base.css.map */

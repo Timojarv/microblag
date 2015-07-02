@@ -3,6 +3,7 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
+from flask.ext.mail import Mail
 from config import *
 
 app = Flask(__name__)
@@ -17,12 +18,7 @@ oid = OpenID(app, os.path.join(basedir, 'tmp'))
 if not app.debug:
     import logging
     from logging.handlers import SMTPHandler
-    credentials = None
-    if MAIL_USERNAME or MAIL_PASSWORD:
-        credentias = (MAIL_USERNAME, MAIL_PASSWORD)
-    mail_handler = SMTPHandler((MAIL_SERVER, MAIL_PORT), 'no-reply@' + MAIL_SERVER, ADMINS, 'MicroBlag Failure', credentials)
-    mail_handler.setLevel(logging.ERROR)
-    app.logger.addHandler(mail_handler)
+    mail = Mail(app)
     #setting up the log files
     from logging.handlers import RotatingFileHandler
     file_handler = RotatingFileHandler('tmp/microblag.log', 'a', 1 * 1024 * 1024, 10)
