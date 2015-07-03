@@ -48,6 +48,11 @@ class User(db.Model):
             self.followed.remove(user)
             return self
 
+    def follow_self(user):
+        u = user.follow(user)
+        if u:
+            db.session.add(u)
+            db.session.commit()
 
     def is_following(self, user):
         return self.followed.filter(followers.c.followed_id == user.id). count() > 0

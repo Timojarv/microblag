@@ -1,0 +1,10 @@
+Hi, {{ user.nickname }},
+
+{{ follower.nickname }} is now following you!
+Click on the following link to visit {{ follower.nickname }}'s profile page:
+
+{{ url_for('user', nickname=follower.nickname, _external=True) }}
+
+Regards,
+
+MicroBlag

@@ -1,0 +1,31 @@
+@import "var";
+
+#email{
+  background-color: rgba($flatui_clouds, 0.8);
+  margin: 0 auto;
+  width: 500px;
+  padding: 50px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 4px 1px $flatui_asbestos;
+  text-align: center;
+}
+
+#user_box{
+  margin: 50px auto;
+}
+
+#follower_box{
+  width: 180px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+a{
+  text-decoration: none;
+  color: $flatui_midnightblue;
+}
+
+h1{
+  margin: -20px 0;
+}

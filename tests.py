@@ -8,6 +8,7 @@ from app.models import User, Post
 from app.forms import EditForm
 from pbkdf2 import crypt
 from datetime import datetime, timedelta
+from app.auth import authenticate
 
 class TestCase(unittest.TestCase):
     def setUp(self):
@@ -34,9 +35,7 @@ class TestCase(unittest.TestCase):
         db.session.commit()
         u = User.query.filter_by(email='nonexistent@test.com').first()
         assert u is None
-        u = User.query.filter_by(email='unit@test.com').first()
-        assert u is not None
-        assert u.pwhash == crypt(passwd, u.pwhash)
+        assert authenticate('unit@test.com', passwd)
 
     def test_nicknames(self):
         nick = 'John'
