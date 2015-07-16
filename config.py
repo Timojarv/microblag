@@ -23,4 +23,4 @@ MAIL_PASSWORD = obj.decrypt(crypted)[:15].decode('utf-8') #Boom we've got the ma
 ADMINS = ['timo.jaerv@gmail.com']
 
 #Pagination
-POSTS_PER_PAGE = 5
+POSTS_PER_PAGE = 16

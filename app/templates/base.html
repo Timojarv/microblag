@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/static/js/moment.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/masonry.js"></script>
     {% if extra_css %}
     {% for css in extra_css %}
       <link rel="stylesheet" type="text/css" href="/static/css/{{ css }}.css">
@@ -48,6 +49,7 @@
     </div>
     {% block content %}{% endblock %}
     <script type="text/javascript">
+      $('#posts_wrapper').masonry({columnWidth: 266, itemSelector: '.post_container'});
       function fadeFlash(object){
         object.classList.add('flash_hover');
         object.onmouseleave=function(){object.classList.remove('flash_hover');};

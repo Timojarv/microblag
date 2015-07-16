@@ -6,7 +6,7 @@ class momentjs(object):
         self.timestamp = timestamp
 
     def render(self, format):
-        return Markup("<span onload='this.innerHTML = moment(\"%s\").%s;\n'></span>" % (self.timestamp.strftime("%Y-%m-%dT%H:%M:%S Z"), format))
+        return Markup("<span class='timestamp' onload='this.innerHTML = moment(\"%s\").%s;\n'></span>" % (self.timestamp.strftime("%Y-%m-%dT%H:%M:%S Z"), format))
 
     def format(self, fmt):
         return self.render("format(\"%s\")" % fmt)

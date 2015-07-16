@@ -52,6 +52,12 @@ td{
 
 #loader{
   display: none;
+  margin: 0 auto;
+}
+
+.author_wrapper .timestamp{
+  font-family: $header_font_stack;
+  font-size: 16px;
 }
 
 .post_container .avatar_wrapper{
@@ -64,26 +70,30 @@ td{
 }
 
 .post_container{
-  width: 226px;
+  width: 250px;
   padding:12px;
   border-radius: 5px;
   height: auto;
   border: 1px solid $flatui_turquoise;
   margin: 8px;
-  display: inline-block;
+  display: block;
   text-align: left;
-  vertical-align: top;
+  position: absolute;
+  float: left;
 }
 
 #posts_wrapper .btn_modern{
-  display: inline-block;
-  margin-top: 60px;
-  margin-left: 8px;
+  display: block;
+  margin: 16px auto;
 }
 
 .post_container .content_wrapper{
   /*clear: both;*/
   margin-top: 16px;
+}
+
+.content_wrapper{
+  word-wrap: break-word;
 }
 
 #post_form{

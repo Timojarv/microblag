@@ -2,7 +2,7 @@
     <div class="avatar_wrapper"> <img src="{{ post.author.avatar(64) }}"></div>
     <div class="author_wrapper">
       {{ post.author.nickname }}<br>
-      <i class="datetime">{{ momentjs(post.timestamp).fromNow() }}</i>
+      <i>{{ momentjs(post.timestamp).fromNow() }}</i>
     </div>
     <div class="content_wrapper">
     <p>{{ post.body }}</p>

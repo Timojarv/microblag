@@ -1,3 +1,9 @@
+{% if posts.has_prev %}<div style="width: 100%; text-align: center;">
+<button class="btn_modern" onclick="loadPosts('{{ posts_type }}', {{ posts.prev_num }})">&lt;&lt; Newer posts</button></div>
+{% endif %}
 {% for post in posts.items %}
   {% include 'post.html' %}
 {% endfor %}
+{% if posts.has_next %}<div style="width: 100%; text-align: center;">
+  <button class="btn_modern" onclick="loadPosts('{{ posts_type }}', {{ posts.next_num }})">Older posts &gt;&gt;</button></div>
+{% endif %}

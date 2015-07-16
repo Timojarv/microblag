@@ -25,7 +25,7 @@
   <hr>
   <div id="posts_wrapper">
   <!--Posts is a pagination object-->
-    <img id="loader" src="../static/img/loader.gif">
   </div>
-<script>loadPosts('{{ user.nickname }}')</script>
+  <img id="loader" src="../static/img/loader.gif">
+  <script>loadPosts('{{ user.nickname }}', 1)</script>
 {% endblock %}

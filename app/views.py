@@ -190,7 +190,7 @@ def load_posts(posts_type='TimoJarv', page=1):
     else:
         user = User.query.filter_by(nickname=posts_type).first()
         posts = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, True)
-    return render_template('moreposts.html', posts=posts)
+    return render_template('moreposts.html', posts=posts, posts_type=posts_type)
 
 @app.errorhandler(404)
 def not_found_error(error):

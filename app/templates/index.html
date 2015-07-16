@@ -19,10 +19,7 @@
   {% endif %}
   <div id="posts_wrapper">
   <!--Posts is a pagination object-->
-    {% if posts.has_prev %}<a class="btn_modern" href="{{ url_for('index', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>{% endif %}
-    {% for post in posts.items %}
-      {% include 'post.html' %}
-    {% endfor %}
-    {% if posts.has_next %}<a class="btn_modern" href="{{ url_for('index', page=posts.next_num) }}">Older posts &gt;&gt;</a>{% endif %}
   </div>
+  <img id="loader" src="../static/img/loader.gif">
+  <script>loadPosts('followed', 1)</script>
 {% endblock %}
